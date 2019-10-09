@@ -1,0 +1,2 @@
+# youtubeGlo
+js functional
