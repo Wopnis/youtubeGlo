@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const keyboard = document.querySelector('.keyboard');
         const closeKeyboard = document.getElementById('close-keyboard');
         const searchInput = document.querySelector('.search-form__input');
+        const space = document.querySelector('#space');
+        const backspace = document.querySelector('#keyboard-backspace');
 
 
         const toggleKeyboard = () => {
@@ -15,12 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const typing = event => {
             const target = event.target;
-
-            if(target.tagName.toLowerCase() === 'button') {
-                searchInput.value += target.textContent.trim();  // trim() - удаляет пробелы.
+            if (target.tagName.toLowerCase() === 'button') {
+                if (target.textContent === space.value) {
+                    searchInput.value += ' ';
+                }
+                if (target.textContent === backspace.innerHTML){
+                    searchInput.value = searchInput.value.slice(0, -1);
+                }
+                else {
+                    searchInput.value += target.textContent.trim(); 
+                }
             }
+
+            // if(target.tagName.toLowerCase() === 'button') {
+            //     searchInput.value += target.textContent.trim();  // trim() - удаляет пробелы
+            // }
             //backspace
             //пробел
+
         };
 
         keyboardButton.addEventListener('click', toggleKeyboard);
